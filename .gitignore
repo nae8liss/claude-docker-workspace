@@ -1,0 +1,30 @@
+# Workspace .gitignore - Only track Docker and Claude config
+
+# Exclude projects directory (they have their own repos)
+projects/
+
+# Docker volumes and containers
+.claude-workspace/
+.docker/
+
+# Claude Code configuration (contains sensitive data)
+.claude/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp

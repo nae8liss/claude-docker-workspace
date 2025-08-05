@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Network Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        h1 { text-align: center; margin-bottom: 30px; }
+        .status { 
+            padding: 15px; 
+            margin: 10px 0; 
+            border-radius: 5px; 
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .success { background: rgba(76, 175, 80, 0.3); }
+        .info { background: rgba(33, 150, 243, 0.3); }
+        #timestamp { font-size: 14px; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Docker Network Test Page</h1>
+        
+        <div class="status success">
+            <strong>✅ Connection Success!</strong><br>
+            If you can see this page, the basic HTTP server is working.
+        </div>
+
+        <div class="status info">
+            <strong>📊 Connection Info:</strong><br>
+            <div id="connection-info">
+                <p><strong>User Agent:</strong> <span id="user-agent"></span></p>
+                <p><strong>Page loaded at:</strong> <span id="timestamp"></span></p>
+                <p><strong>Current URL:</strong> <span id="current-url"></span></p>
+            </div>
+        </div>
+
+        <div class="status">
+            <strong>🔧 Test Results:</strong>
+            <ul>
+                <li>HTML loading: ✅ Working</li>
+                <li>CSS styling: ✅ Working</li>
+                <li>JavaScript execution: <span id="js-status">⏳ Testing...</span></li>
+            </ul>
+        </div>
+
+        <div class="status info">
+            <strong>📝 Next Steps:</strong><br>
+            If this loads properly, we know the basic HTTP server works and can troubleshoot the React/Vite specific issues.
+        </div>
+    </div>
+
+    <script>
+        // Test JavaScript execution
+        document.getElementById('js-status').textContent = '✅ Working';
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+        document.getElementById('timestamp').textContent = new Date().toLocaleString();
+        document.getElementById('current-url').textContent = window.location.href;
+        
+        // Add some interactivity to prove JS is working
+        document.querySelector('h1').addEventListener('click', function() {
+            this.style.transform = this.style.transform === 'scale(1.1)' ? 'scale(1)' : 'scale(1.1)';
+            this.style.transition = 'transform 0.3s ease';
+        });
+    </script>
+</body>
+</html>

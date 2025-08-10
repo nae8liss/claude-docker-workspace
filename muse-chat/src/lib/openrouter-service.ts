@@ -60,7 +60,7 @@ The response should be your full, thoughtful reply to: "${userMessage}"`;
       // First, generate a quick narration response
       const narrationResult = await generateText({
         model: client(muse.model),
-        messages: messages as Parameters<typeof generateText>[0]['messages'],
+        messages: [...messages] as Parameters<typeof generateText>[0]['messages'],
         temperature: Math.min(muse.temperature + 0.2, 1.0) // Slightly more creative for narration
       });
 
@@ -75,7 +75,7 @@ The response should be your full, thoughtful reply to: "${userMessage}"`;
           ...messages,
           { role: 'assistant', content: `[NARRATION: ${narration}]` },
           { role: 'user', content: 'Now provide your detailed response:' }
-        ] as Parameters<typeof streamText>[0]['messages'],
+        ] as any,
         temperature: muse.temperature
       });
 
@@ -98,7 +98,7 @@ The response should be your full, thoughtful reply to: "${userMessage}"`;
 
       await generateText({
         model: client('openai/gpt-4o-mini'),
-        messages: [{ role: 'user', content: 'Test' }] as Parameters<typeof generateText>[0]['messages']
+        messages: [{ role: 'user', content: 'Test' }] as any
       });
       return true;
     } catch {

@@ -14,7 +14,7 @@ interface AudioPlayerProps {
 
 export function AudioPlayer({
   audioUrl,
-  isPlaying: _isPlaying,
+  isPlaying,
   isMuted,
   onToggleMute,
   onPlayStateChange

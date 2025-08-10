@@ -75,7 +75,7 @@ The response should be your full, thoughtful reply to: "${userMessage}"`;
           ...messages,
           { role: 'assistant', content: `[NARRATION: ${narration}]` },
           { role: 'user', content: 'Now provide your detailed response:' }
-        ] as any,
+        ] as Array<{role: string, content: string}>,
         temperature: muse.temperature
       });
 
@@ -98,7 +98,7 @@ The response should be your full, thoughtful reply to: "${userMessage}"`;
 
       await generateText({
         model: client('openai/gpt-4o-mini'),
-        messages: [{ role: 'user', content: 'Test' }] as any
+        messages: [{ role: 'user', content: 'Test' }] as Array<{role: string, content: string}>
       });
       return true;
     } catch {

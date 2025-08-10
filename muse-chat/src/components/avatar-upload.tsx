@@ -4,7 +4,7 @@ import { useState, useRef, useCallback } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
+// import { Label } from "@/components/ui/label"; // Unused
 import { Upload, X } from "lucide-react";
 import ReactCrop, { Crop, PixelCrop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
@@ -168,6 +168,7 @@ export function AvatarUpload({ currentAvatarUrl, onAvatarChange, name }: AvatarU
                 minHeight={50}
                 circularCrop
               >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   ref={imgRef}
                   alt="Crop preview"

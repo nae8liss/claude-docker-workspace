@@ -91,7 +91,7 @@ export function MuseConfigModal({
             {initialConfig ? 'Edit Muse Configuration' : 'Create New Muse'}
           </DialogTitle>
           <DialogDescription>
-            Configure your Muse's personality, behavior, and voice settings.
+            Configure your Muse&apos;s personality, behavior, and voice settings.
           </DialogDescription>
         </DialogHeader>
 

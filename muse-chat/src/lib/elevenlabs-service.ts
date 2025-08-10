@@ -70,11 +70,13 @@ export class ElevenLabsService {
       }
 
       const data = await response.json();
-      return data.voices.map((voice: any) => ({
-        voice_id: voice.voice_id,
-        name: voice.name,
-        category: voice.category || 'user'
-      }));
+      return data.voices.map((voice: unknown) => {{
+        const v = voice as { voice_id: string; name: string; category?: string };
+          voice_id: v.voice_id,
+          name: v.name,
+          category: v.category || 'user'
+        };
+      });
     } catch (error) {
       console.error('Error fetching voices:', error);
       // Return some default voice options if API fails

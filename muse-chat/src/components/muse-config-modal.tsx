@@ -224,7 +224,7 @@ export function MuseConfigModal({
                   <SelectValue placeholder={loadingVoices ? "Loading voices..." : "Select a voice (optional)"} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">No TTS (Text only)</SelectItem>
+                  <SelectItem value="none">No TTS (Text only)</SelectItem>
                   {voices.map((voice) => (
                     <SelectItem key={voice.voice_id} value={voice.voice_id}>
                       {voice.name} ({voice.category})

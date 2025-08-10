@@ -134,7 +134,7 @@ export function MuseConfigModal({
                 id="description"
                 value={config.description || ''}
                 onChange={(e) => setConfig(prev => ({ ...prev, description: e.target.value }))}
-                placeholder="Describe your muse's personality and role"
+                placeholder="Describe your muse&apos;s personality and role"
                 rows={3}
               />
             </div>
@@ -245,7 +245,7 @@ export function MuseConfigModal({
               id="systemPrompt"
               value={config.systemPrompt || ''}
               onChange={(e) => setConfig(prev => ({ ...prev, systemPrompt: e.target.value }))}
-              placeholder="Enter the system prompt that defines your muse's behavior"
+              placeholder="Enter the system prompt that defines your muse&apos;s behavior"
               rows={5}
             />
           </div>

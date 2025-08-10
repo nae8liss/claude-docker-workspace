@@ -70,8 +70,9 @@ export class ElevenLabsService {
       }
 
       const data = await response.json();
-      return data.voices.map((voice: unknown) => {{
+      return data.voices.map((voice: unknown) => {
         const v = voice as { voice_id: string; name: string; category?: string };
+        return {
           voice_id: v.voice_id,
           name: v.name,
           category: v.category || 'user'

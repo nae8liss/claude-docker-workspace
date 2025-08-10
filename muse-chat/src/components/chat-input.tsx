@@ -1,14 +1,19 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
+import {
+  PromptInput,
+  PromptInputSubmit,
+  PromptInputTextarea,
+  PromptInputToolbar,
+} from '@/components/ai-elements/prompt-input';
+import type { ChatStatus } from 'ai';
 
 interface ChatInputProps {
   onSendMessage: (message: string) => void;
   disabled?: boolean;
+  status?: ChatStatus;
 }
 
-export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
+export function ChatInput({ onSendMessage, disabled, status }: ChatInputProps) {
   const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -19,28 +24,26 @@ export function ChatInput({ onSendMessage, disabled }: ChatInputProps) {
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      handleSubmit(e);
-    }
-  };
-
   return (
     <div className="border-t p-4 bg-background">
-      <form onSubmit={handleSubmit} className="flex gap-2 items-end">
-        <Textarea
+      <PromptInput onSubmit={handleSubmit} className="relative">
+        <PromptInputTextarea
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={handleKeyDown}
           placeholder="Type your message..."
-          className="min-h-[60px] max-h-[120px] resize-none"
           disabled={disabled}
+          minHeight={60}
+          maxHeight={120}
         />
-        <Button type="submit" disabled={!message.trim() || disabled} size="sm">
-          <Send className="h-4 w-4" />
-        </Button>
-      </form>
+        <PromptInputToolbar>
+          <div /> {/* Empty div for left side */}
+          <PromptInputSubmit
+            disabled={!message.trim() || disabled}
+            status={status}
+            className="absolute right-1 bottom-1"
+          />
+        </PromptInputToolbar>
+      </PromptInput>
     </div>
   );
 }

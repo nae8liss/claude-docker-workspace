@@ -213,7 +213,11 @@ export default function Home() {
         )}
       </div>
 
-      <ChatInput onSendMessage={handleSendMessage} disabled={isLoading} />
+      <ChatInput 
+        onSendMessage={handleSendMessage} 
+        disabled={isLoading} 
+        status={isLoading ? 'streaming' : 'ready'}
+      />
 
       <MuseConfigModal
         isOpen={isConfigModalOpen}

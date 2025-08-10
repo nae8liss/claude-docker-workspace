@@ -10,6 +10,7 @@ import { MuseStorage } from "@/lib/muse-storage";
 import { OpenRouterService } from "@/lib/openrouter-service";
 import { ElevenLabsService } from "@/lib/elevenlabs-service";
 import { MuseConfig } from "@/types/muse";
+import packageJson from "../../package.json";
 
 interface Message {
   id: string;
@@ -220,6 +221,11 @@ export default function Home() {
         onSave={handleSaveConfig}
         initialConfig={currentMuse}
       />
+      
+      {/* Version number */}
+      <div className="fixed bottom-2 right-2 text-xs text-muted-foreground opacity-50 pointer-events-none">
+        v{packageJson.version}
+      </div>
     </div>
   );
 }
